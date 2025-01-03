@@ -268,29 +268,29 @@
 
     <!-- Main Title -->
     <h1>Attendance Tracking System</h1>
-    <h2>Add Student</h2>
-
-    <!-- Add Student Form -->
-    <form action="/add_student" method="post">
-        Student ID: <input type="text" name="student_id" required><br>
-        Name: <input type="text" name="name" required><br>
-        Parent Phone: <input type="text" name="parent_phone" required><br>
-        <button type="submit">Add Student</button>
-    </form>
-
-    <hr>
+    <h2>Mark Attendance</h2>
 
     <!-- Attendance Form -->
-    <h2>Mark Attendance</h2>
-    <form action="/mark_attendance" method="post">
-        Student ID: <input type="text" name="student_id" required><br>
-        Date: <input type="date" name="date" required><br>
-        Status: 
-        <select name="status" required>
+    <form id="attendanceForm">
+        <label for="student_id">Student ID:</label>
+        <input type="number" id="student_id" name="student_id" required>
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        
+        <label for="session">Session:</label>
+        <select id="session" name="session" required>
+            <option value="morning">Morning</option>
+            <option value="evening">Evening</option>
+        </select>
+        
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
             <option value="present">Present</option>
             <option value="absent">Absent</option>
-        </select><br>
-        <button type="submit">Mark Attendance</button>
+        </select>
+        
+        <button type="submit">Submit</button>
     </form>
 
     <!-- Modal for Confirmation -->
@@ -309,33 +309,32 @@
             <!-- School Contact -->
             <div>
                 <h3>School Contact</h3>
-                <p><strong>Phone:</strong> +91-123-456-7890</p>
-                <p><strong>Email:</strong> info@zphstadi.com</p>
+                <p><strong>Phone:</strong> +91 8985602181</p>
+                <p><strong>Email:</strong> zphstadikalapudi@gmail.com</p>
                 <p><strong>Office Hours:</strong> 8:30 AM - 4:30 PM</p>
             </div>
             <!-- Principal Contact -->
             <div>
                 <h3>Principal Contact</h3>
                 <p><strong>Name:</strong> Dr. R. Kumar</p>
-                <p><strong>Phone:</strong> +91-987-654-3210</p>
-                <p><strong>Email:</strong> principal@zphstadi.com</p>
+                <p><strong>Phone:</strong> +91 7780741052</p>
+                <p><strong>Email:</strong> pavanikoduri1981@gmail.com</p>
+                <p><strong>Office Hours:</strong> 9:00 AM - 5:00 PM</p>
             </div>
         </div>
     </div>
 
-    <!-- Modal Script -->
     <script>
-        const modal = document.getElementById("confirmationModal");
-        const closeModalButton = document.getElementById("closeModal");
-
-        // Show modal on successful form submission
-        document.querySelector("form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            modal.style.display = "flex";
+        // Show Modal on Form Submit
+        document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Show modal
+            document.getElementById('confirmationModal').style.display = 'flex';
         });
 
-        closeModalButton.addEventListener("click", function() {
-            modal.style.display = "none";
+        // Close the modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('confirmationModal').style.display = 'none';
         });
     </script>
 
